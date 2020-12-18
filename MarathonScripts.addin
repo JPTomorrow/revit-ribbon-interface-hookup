@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>Marathon Revit Script Addins</Name>
+		<Assembly>..\MarathonScripts\RevitAddinHookup.dll</Assembly>
+		<AddInId>16824613-93A7-4981-B2CF-27AB6E52280A</AddInId>
+		<Text>Marathon Revit Script Addins</Text>
+		<Description>All Marathon Electrical Addin Scripts</Description>
+		<FullClassName>MainApp.ThisApplication</FullClassName>
+		<VendorId>MARATHON</VendorId>
+		<VendorDescription>Justin Morrow - Marathon Electrical - BIM Department, https://marathonelectrical.com/</VendorDescription>
+		<Author>Marathon Electrical Inc.</Author>
+	</AddIn>
+</RevitAddIns>
