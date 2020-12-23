@@ -30,7 +30,6 @@
     <Compile Include="./ThisApplication.cs"/>
     <Compile Include="./libs/*.cs"/>
     <Compile Include="./dock/vm/*.cs"/>
-    <Compile Include="../common_build_source/RevitCustomDebugger.cs"/>
 
     <Compile Include="ThisApplication.Designer.cs">
       <DependentUpon>ThisApplication.cs</DependentUpon>

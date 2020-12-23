@@ -10,7 +10,7 @@
             "args": [
                 "Build.csproj",
                 "/t:Build",
-                "/p:Configuration=Debug",
+                "/p:Configuration=Release",
                 "/p:Platform=\"AnyCPU\"",
                 "/property:GenerateFullPaths=true"
             ],
@@ -23,7 +23,7 @@
             "args": [
                 "Build.csproj",
                 "/t:CopyFiles",
-                "/p:Configuration=Debug",
+                "/p:Configuration=Release",
                 "/p:Platform=\"AnyCPU\"",
                 "/property:GenerateFullPaths=true",
                 "/verbosity:quiet",

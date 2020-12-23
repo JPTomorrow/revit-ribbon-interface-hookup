@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
-using JPMorrow.Tools.Diagnostics;
 using Autodesk.Revit.UI;
-using Autodesk.Revit.UI.Events;
-using Autodesk.Revit.DB;
+using JPMorrow.Tools.Diagnostics;
 
 namespace JPMorrow.Revit.Addin.Mods
 {
-	public class Modules
+    public class Modules
 	{
 		public List<ModuleData> ModulesList { get; set; } = new List<ModuleData>();
 
