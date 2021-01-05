@@ -11,6 +11,7 @@ using System.IO;
 using System.Windows.Media.Imaging;
 using JPMorrow.UI.Views;
 using JPMorrow.Revit.Addin.Mods;
+using JPMorrow.Revit.Versioning;
 
 namespace MainApp
 {
@@ -93,7 +94,10 @@ namespace MainApp
 						rps[i].Enabled = false;
 						rps[i].Visible = false;
 
-						if (File.Exists(Path.GetDirectoryName(path) + "\\" + rem_pbds[i].Data.DirectoryName + "\\" + rem_pbds[i].Data.DirectoryName + ".dll"))
+						// get year of revit to find dll to enable button
+						RevitVersion v = new RevitVersion(a);
+
+						if (File.Exists(Path.GetDirectoryName(path) + "\\" + rem_pbds[i].Data.DirectoryName + "\\" + rem_pbds[i].Data.DirectoryName + "_" + v.Year + ".dll"))
 						{
 							rps[i].Enabled = true;
 							rps[i].Visible = true;
