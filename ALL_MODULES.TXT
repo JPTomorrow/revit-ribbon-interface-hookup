@@ -17,7 +17,7 @@ Pull Box Sizer|PullBoxSizer|PullBoxSizer|Con_Cat_s.png|Con_Cat_b.png|Electrical
 #### Fixture Category
 ####
 
-Lighting Fixture Elevation To Structure|LightingFixtureElevationToStructure|LightingFixtureElevationToStructure|MPACT_Cat_s.png|MPACT_Cat_b.png|Fixtures
+Fixture To Structure Tag|LightingFixtureElevationToStructure|LightingFixtureElevationToStructure|MPACT_Cat_s.png|MPACT_Cat_b.png|Fixtures
 
 ####
 #### View Category
@@ -51,7 +51,7 @@ Find Elements|ElementFinder|ElementFinder|Search_Cat_s.png|Search_Cat_b.png|Sear
 ####Wire Pull BOM|BOMGenerator|BOMGenerator|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
 ####P3 Lighting BOM|PThreeGenerator|PThreeGenerator|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
 ####P3Lite|P3L|P3L|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
-Bill of Material Generator|WireBOMLite|WireBOMLite|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
+B.O.M. Generator|WireBOMLite|WireBOMLite|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
 
 ####
 #### Hanger Category

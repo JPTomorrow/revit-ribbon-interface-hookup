@@ -36,8 +36,8 @@ namespace MainApp
 
 			a.CreateRibbonTab(ribbonName);
 
-			foreach (string category in mods.GetDistictCategoryList().OrderBy(x => x.First()))
-			{
+			foreach (string category in mods.GetDistictCategoryList().OrderBy(x => x.First())) {
+
 				RibbonPanel rp = a.CreateRibbonPanel(ribbonName, category);
 
 				List<ModuleData> cat_mods = mods.GetModulesByCategory(category);
@@ -45,37 +45,38 @@ namespace MainApp
 				List<PBDataPair> all_data = new List<PBDataPair>();
 				List<RibbonItem> all_items = new List<RibbonItem>();
 
-				for(var i = 0; i < cat_mods.Count; i++)
-				{
+				for(var i = 0; i < cat_mods.Count; i++) {
 					var m_data = cat_mods[i];
 
 					//Create Button Data
 					PushButtonData pbd = new PushButtonData(m_data.Caption, m_data.Caption, exeConfigPath, "MainApp.Invoke" + m_data.InvokeName);
 
 					//Make button images
-					try
-					{
+					try {
 						pbd.Image = new BitmapImage(new Uri(Path.Combine(Path.GetDirectoryName(path) + "\\Res\\" + m_data.Icon), UriKind.Absolute));
-
 						pbd.LargeImage = new BitmapImage(new Uri(Path.Combine(Path.GetDirectoryName(path) + "\\Res\\" + m_data.LargeIcon), UriKind.Absolute));
 					}
-					catch
-					{
+					catch {
 						pbd.Image = new BitmapImage(new Uri(Path.Combine(Path.GetDirectoryName(path) + "\\Res\\default_s.png"), UriKind.Absolute));
-
 						pbd.LargeImage = new BitmapImage(new Uri(Path.Combine(Path.GetDirectoryName(path) + "\\Res\\default_b.png"), UriKind.Absolute));
 					}
 
 					all_data.Add(new PBDataPair(m_data, pbd));
 				}
 
-				while(all_data.Any())
-				{
+				// get year of revit to find dll to enable button
+				RevitVersion v = new RevitVersion(a);
+
+				// check if dll exists and remove button if not
+				bool dll_chk(PBDataPair x) => File.Exists(Path.GetDirectoryName(path) + "\\" + x.Data.DirectoryName + "\\" + x.Data.DirectoryName + "_" + v.Year + ".dll");
+				all_data.RemoveAll(x => !dll_chk(x));
+
+
+				while(all_data.Any()) {
 					List<PBDataPair> rem_pbds = all_data.RemoveTake(3).ToList();
 					List<RibbonItem> rps = new List<RibbonItem>();
 
-					switch(rem_pbds.Count)
-					{
+					switch(rem_pbds.Count) {
 						case 3:
 							rps.AddRange(rp.AddStackedItems(rem_pbds[0].PBData, rem_pbds[1].PBData, rem_pbds[2].PBData));
 							break;
@@ -86,22 +87,12 @@ namespace MainApp
 							rps.Add(rp.AddItem(rem_pbds[0].PBData));
 							break;
 						default:
-							throw new Exception("Shouldnt get here.");
+							break;
 					}
 
-					for (var i = 0; i < rem_pbds.Count; i++)
-					{
-						rps[i].Enabled = false;
-						rps[i].Visible = false;
-
-						// get year of revit to find dll to enable button
-						RevitVersion v = new RevitVersion(a);
-
-						if (File.Exists(Path.GetDirectoryName(path) + "\\" + rem_pbds[i].Data.DirectoryName + "\\" + rem_pbds[i].Data.DirectoryName + "_" + v.Year + ".dll"))
-						{
-							rps[i].Enabled = true;
-							rps[i].Visible = true;
-						}
+					for (var i = 0; i < rem_pbds.Count; i++) {
+						rps[i].Enabled = true;
+						rps[i].Visible = true;
 					}
 
 					all_items.AddRange(rps);
