@@ -7,6 +7,8 @@ using System.Linq;
 using System.Reflection;
 using debuggerPrint;
 using JPMorrow.Revit.Versioning;
+using System.Security.Policy;
+using JPMorrow.Tools.Diagnostics;
 
 namespace MainApp
 {
@@ -16,27 +18,34 @@ namespace MainApp
 
 		public abstract string ModuleName { get; }
 
-		//public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
 		public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
 		{
 			RevitVersion v = new RevitVersion(commandData.Application.Application.VersionName);
 			string path = Assembly.GetExecutingAssembly().Location;
-			ExeConfigPath = Path.GetDirectoryName(path) + "\\" + ModuleName + "\\" + ModuleName + "_" + v.Year + ".dll";
-			String exeConfigPath2 = Path.GetDirectoryName(path) + "\\Res";
-
+			ExeConfigPath = ThisApplication.AppBaseDirectory + "\\" + ModuleName + "\\" + ModuleName + "_" + v.Year + ".dll";
+			
 			string strCommandName = "ThisApplication";
 
-			byte[] assemblyBytes = File.ReadAllBytes(ExeConfigPath);
+			Assembly asm = null;
+			try  {
+				var bytes = File.ReadAllBytes(ExeConfigPath);
+			 	asm = Assembly.Load(bytes);
+			}
+			catch {
+				asm = Assembly.LoadFrom(ExeConfigPath);
+			}
 
-			Assembly objAssembly = Assembly.Load(assemblyBytes);
-			IEnumerable<Type> myIEnumerableType = GetTypesSafely(objAssembly);
+			IEnumerable<Type> myIEnumerableType = GetTypesSafely(asm);
+
 			foreach (Type objType in myIEnumerableType)
 			{
 				if (objType.IsClass)
 				{
 					if (objType.Name.ToLower() == strCommandName.ToLower()) {
 						object ibaseObject = Activator.CreateInstance(objType);
-						object[] arguments = new object[] { commandData, exeConfigPath2, elements };
+
+						String res_path = Path.GetDirectoryName(path) + "\\Res";
+						object[] arguments = new object[] { commandData, res_path, elements };
 						object result = null;
 
 						result = objType.InvokeMember("Execute", BindingFlags.Default | BindingFlags.InvokeMethod, null, ibaseObject, arguments);
@@ -48,19 +57,19 @@ namespace MainApp
 			return Result.Succeeded;
 
 		}
-		private static IEnumerable<Type> GetTypesSafely(Assembly assembly)
-		{
-			try
-			{
+
+		private static IEnumerable<Type> GetTypesSafely(Assembly assembly) {
+
+			try {
 				return assembly.GetTypes();
 			}
-			catch (ReflectionTypeLoadException ex)
-			{
+			catch (ReflectionTypeLoadException ex) {
 				return ex.Types.Where(x => x != null);
 			}
 		}
+
 	}
-	
+
 	//Conduit Projects
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
 	public class InvokeSplitElementConduit : InvokeModuleBase, IExternalCommand { public override string ModuleName => "SplitElementConduit"; }
@@ -116,4 +125,6 @@ namespace MainApp
 	//Test projects
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
 	public class InvokeRevitSTLExporter : InvokeModuleBase, IExternalCommand { public override string ModuleName => "RevitSTLExporter"; }
+	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+	public class InvokeRevitTestBed : InvokeModuleBase, IExternalCommand { public override string ModuleName => "RevitTestBed"; }
 }

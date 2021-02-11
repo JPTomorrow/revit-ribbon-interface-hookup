@@ -4,7 +4,7 @@
     <OutputType>Library</OutputType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <InterMediateOutputPath>./build</InterMediateOutputPath>
-    <OutputPath>C:/ProgramData/Autodesk/Revit/Addins/MarathonScripts</OutputPath>
+    <OutputPath>C:\ProgramData\Autodesk\Revit\Addins\MarathonScripts</OutputPath> <!-- C:\ProgramData\Autodesk\Revit\Addins\MarathonScripts -->
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -47,9 +47,7 @@
     </Page>
   </ItemGroup>
 
-
   <ItemGroup>
-
     <Reference Include="RevitAPI">
       <HintPath>./refs/RevitAPI.dll</HintPath>
     </Reference>
@@ -66,8 +64,8 @@
     <Reference Include="WindowsBase"/>
     <Reference Include="PresentationCore"/>
     <Reference Include="PresentationFramework"/>
-
   </ItemGroup>
+
 
   <Target Name="CopyFiles" AfterTargets="Build">
     <ItemGroup>

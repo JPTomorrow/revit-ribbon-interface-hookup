@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using JPMorrow.UI.Views;
 using JPMorrow.Revit.Addin.Mods;
 using JPMorrow.Revit.Versioning;
+using JPMorrow.Tools.Diagnostics;
 
 namespace MainApp
 {
@@ -23,10 +24,15 @@ namespace MainApp
 	{
 		public DockPaneView m_MyDockableWindow = null;
 		public static Modules mods;
-
+		public static string AppBaseDirectory { get => "C:\\ProgramData\\Autodesk\\Revit\\Addins\\MarathonScripts"; }
+		
 		public Result OnStartup(UIControlledApplication a)
         {
+			// create buttons
 			string path = Assembly.GetExecutingAssembly().Location;
+
+			// set up app domain to shadow copy files which will prevent file locking
+			AppDomain.CurrentDomain.SetShadowCopyFiles();
 
 			mods = new Modules();
 			mods.LoadModules(Path.GetDirectoryName(path) + "\\ALL_MODULES.TXT");

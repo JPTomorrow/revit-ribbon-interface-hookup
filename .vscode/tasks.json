@@ -12,7 +12,8 @@
                 "/t:Build",
                 "/p:Configuration=Release",
                 "/p:Platform=\"AnyCPU\"",
-                "/property:GenerateFullPaths=true"
+                "/property:GenerateFullPaths=true",
+                "-r"
             ],
             "problemMatcher": "$msCompile"
         },

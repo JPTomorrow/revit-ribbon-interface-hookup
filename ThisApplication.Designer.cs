@@ -7,6 +7,8 @@
  *
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
+using JPMorrow.Tools.Diagnostics;
+
 namespace MainApp {
 
     public sealed partial class ThisApplication : Autodesk.Revit.UI.Macros.ApplicationEntryPoint {
