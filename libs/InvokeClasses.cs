@@ -108,7 +108,7 @@ namespace MainApp
 	public class InvokePanelFilterTemplates : InvokeModuleBase, IExternalCommand { public override string ModuleName => "PanelFilterTemplates"; }
 	//Search projects
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeElementFinder : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ElementFinder"; }
+	public class InvokeFindElements : InvokeModuleBase, IExternalCommand { public override string ModuleName => "FindElements"; }
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
 	public class InvokeFindReplaceParameter : InvokeModuleBase, IExternalCommand { public override string ModuleName => "FindReplaceParameter"; }
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
