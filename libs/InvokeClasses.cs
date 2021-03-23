@@ -26,14 +26,8 @@ namespace MainApp
 			
 			string strCommandName = "ThisApplication";
 
-			Assembly asm = null;
-			try  {
-				var bytes = File.ReadAllBytes(ExeConfigPath);
-			 	asm = Assembly.Load(bytes);
-			}
-			catch {
-				asm = Assembly.LoadFrom(ExeConfigPath);
-			}
+			var bytes = File.ReadAllBytes(ExeConfigPath);
+			var asm = Assembly.Load(bytes);
 
 			IEnumerable<Type> myIEnumerableType = GetTypesSafely(asm);
 
@@ -110,6 +104,8 @@ namespace MainApp
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
 	public class InvokeFindElements : InvokeModuleBase, IExternalCommand { public override string ModuleName => "FindElements"; }
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+	public class InvokeSelectedFindView : InvokeModuleBase, IExternalCommand { public override string ModuleName => "SelectedFindView"; }
+	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
 	public class InvokeFindReplaceParameter : InvokeModuleBase, IExternalCommand { public override string ModuleName => "FindReplaceParameter"; }
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
 	public class InvokeFindByParameterInView : InvokeModuleBase, IExternalCommand { public override string ModuleName => "FindByParameterInView"; }
@@ -125,6 +121,6 @@ namespace MainApp
 	//Test projects
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
 	public class InvokeRevitSTLExporter : InvokeModuleBase, IExternalCommand { public override string ModuleName => "RevitSTLExporter"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeRevitTestBed : InvokeModuleBase, IExternalCommand { public override string ModuleName => "RevitTestBed"; }
+	// [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+	// public class InvokeRevitTestBed : InvokeModuleBase, IExternalCommand { public override string ModuleName => "RevitTestBed"; }
 }

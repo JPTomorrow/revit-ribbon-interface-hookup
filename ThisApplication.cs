@@ -31,9 +31,6 @@ namespace MainApp
 			// create buttons
 			string path = Assembly.GetExecutingAssembly().Location;
 
-			// set up app domain to shadow copy files which will prevent file locking
-			AppDomain.CurrentDomain.SetShadowCopyFiles();
-
 			mods = new Modules();
 			mods.LoadModules(Path.GetDirectoryName(path) + "\\ALL_MODULES.TXT");
 

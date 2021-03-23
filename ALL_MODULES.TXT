@@ -36,6 +36,7 @@ Panel Filters|PanelFilterTemplates|PanelFilterTemplates|View_Cat_s.png|View_Cat_
 ####
 
 Find Elements|FindElements|FindElements|Search_Cat_s.png|Search_Cat_b.png|Search
+Selected Find View|SelectedFindView|SelectedFindView|Search_Cat_s.png|Search_Cat_b.png|Search
 
 ####
 #### Sheets Category
@@ -73,4 +74,3 @@ B.O.M. Generator|WireBOMLite|WireBOMLite|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C
 
 ####Test Program|RevitTestBed|RevitTestBed|Test_Cat_s.png|Test_Cat_b.png|Test
 Revit STL Exporter|RevitSTLExporter|RevitSTLExporter|Test_Cat_s.png|Test_Cat_b.png|Test
-RTB|RevitTestBed|RevitTestBed|Test_Cat_s.png|Test_Cat_b.png|Test

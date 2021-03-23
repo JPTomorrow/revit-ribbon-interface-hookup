@@ -13,7 +13,9 @@
                 "/p:Configuration=Release",
                 "/p:Platform=\"AnyCPU\"",
                 "/property:GenerateFullPaths=true",
-                "-r"
+                "-r",
+                "-nologo",
+                "-verbosity:quiet"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -28,6 +30,8 @@
                 "/p:Platform=\"AnyCPU\"",
                 "/property:GenerateFullPaths=true",
                 "/verbosity:quiet",
+                "-nologo",
+                "-verbosity:quiet"
             ],
             "problemMatcher": "$msCompile",
         },
