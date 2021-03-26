@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using Autodesk.Revit.UI;
-using Autodesk.Revit.UI.Events;
 using Autodesk.Revit.DB;
-using Autodesk.Revit.UI.Selection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -12,12 +9,11 @@ using System.Windows.Media.Imaging;
 using JPMorrow.UI.Views;
 using JPMorrow.Revit.Addin.Mods;
 using JPMorrow.Revit.Versioning;
-using JPMorrow.Tools.Diagnostics;
 
 namespace MainApp
 {
-	#region addin info
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    #region addin info
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
     [Autodesk.Revit.DB.Macros.AddInId("16824613-93A7-4981-B2CF-27AB6E52280A")]
 	#endregion
 	public partial class ThisApplication : IExternalApplication
