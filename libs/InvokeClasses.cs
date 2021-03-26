@@ -95,8 +95,6 @@ namespace MainApp
 	//M.P.A.C.T. projects
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
     public class InvokeWireBOMLite : InvokeModuleBase, IExternalCommand { public override string ModuleName => "WireBOMLite"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-    public class InvokeP3Lighting : InvokeModuleBase, IExternalCommand { public override string ModuleName => "P3Lighting"; }
 	
 	// Fixture projects
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]

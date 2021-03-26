@@ -35,7 +35,6 @@ Selected Find View|SelectedFindView|SelectedFindView|Search_Cat_s.png|Search_Cat
 #### BOM Category
 ####
 
-P3 Lighting|P3Lighting|P3Lighting|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
 B.O.M. Generator|WireBOMLite|WireBOMLite|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
 
 ####
