@@ -39,7 +39,7 @@ namespace MainApp
 
 			a.CreateRibbonTab(ribbonName);
 
-			foreach (string category in mods.GetDistictCategoryList().OrderBy(x => x.First())) {
+			foreach (string category in mods.GetDistictCategoryList()) {
 
 				RibbonPanel rp = a.CreateRibbonPanel(ribbonName, category);
 

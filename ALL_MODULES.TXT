@@ -12,6 +12,12 @@ JBox To/From Swap|SwapJboxParam|SwapJboxParam|Con_Cat_s.png|Con_Cat_b.png|Electr
 Pull Box Sizer|PullBoxSizer|PullBoxSizer|Con_Cat_s.png|Con_Cat_b.png|Electrical
 
 ####
+#### BOM Category
+####
+
+B.O.M. Generator|WireBOMLite|WireBOMLite|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
+
+####
 #### Fixture Category
 ####
 
@@ -32,12 +38,6 @@ Panel Filters|PanelFilterTemplates|PanelFilterTemplates|View_Cat_s.png|View_Cat_
 Selected Find View|SelectedFindView|SelectedFindView|Search_Cat_s.png|Search_Cat_b.png|Search
 
 ####
-#### BOM Category
-####
-
-B.O.M. Generator|WireBOMLite|WireBOMLite|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
-
-####
 #### Test Category
 ####
 
@@ -47,4 +47,4 @@ B.O.M. Generator|WireBOMLite|WireBOMLite|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C
 #### Help Category
 ####
 
-Help|MarathonHelp|MarathonHelp|Test_Cat_s.png|Test_Cat_b.png|Help
+Help|MarathonHelp|MarathonHelp|Help_Cat_s.png|Help_Cat_b.png|Help
