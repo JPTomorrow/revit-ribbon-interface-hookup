@@ -3,16 +3,13 @@
 ####
 
 Conduit Run Info|ConduitRunInfo|ConduitRunInfo|Con_Cat_s.png|Con_Cat_b.png|Electrical
-####Single CR Info Single|ConduitRunInfo|SingleConduitRunInfo|Con_Cat_s.png|Con_Cat_b.png|Electrical
 Jbox Match Run Params|JboxMatchParams|JboxMatchParams|Con_Cat_s.png|Con_Cat_b.png|Electrical
 Conduit Workset Match|ConduitWorksetMatch|ConduitWorksetMatch|Con_Cat_s.png|Con_Cat_b.png|Electrical
 Conduit To/From Match|ConduitMatchParams|ConduitMatchParams|Con_Cat_s.png|Con_Cat_b.png|Electrical
 Conduit Match Params Service|ConduitRunMatchParamService|ConduitRunMatchParamService|Con_Cat_s.png|Con_Cat_b.png|Electrical
 Conduit Tags|ConduitTaggingFactory|ConduitTaggingFactory|Con_Cat_s.png|Con_Cat_b.png|Electrical
 JBox To/From Swap|SwapJboxParam|SwapJboxParam|Con_Cat_s.png|Con_Cat_b.png|Electrical
-Panel Info|PanelScheduleInfo|PanelScheduleInfo|Con_Cat_s.png|Con_Cat_b.png|Electrical
 Pull Box Sizer|PullBoxSizer|PullBoxSizer|Con_Cat_s.png|Con_Cat_b.png|Electrical
-####Easy Route Branch Conduit|AutoRouteBranchConduit|AutoRouteBranchConduit|Con_Cat_s.png|Con_Cat_b.png|Electrical
 
 ####
 #### Fixture Category
@@ -24,11 +21,8 @@ Fixture To Structure Tag|LightingFixtureElevationToStructure|LightingFixtureElev
 #### View Category
 ####
 
-####Disable Linked File Grid Visibility|LinkedFileSettingsOverride|LinkedFileSettingsOverride|View_Cat_s.png|View_Cat_b.png|View
-####Hide Useless Reference Planes|HideUselessReferencePlanes|HideUselessReferencePlanes|View_Cat_s.png|View_Cat_b.png|View
 Align 3D View to Scope Box|Align3DViewToScopeBox|Align3DViewToScopeBox|View_Cat_s.png|View_Cat_b.png|View
 Fit Floorplan Crop|ClampFloorplanCropRegion|ClampFloorplanCropRegion|View_Cat_s.png|View_Cat_b.png|View
-Reveal All Hidden|RevealAllHidden|RevealAllHidden|View_Cat_s.png|View_Cat_b.png|View
 Panel Filters|PanelFilterTemplates|PanelFilterTemplates|View_Cat_s.png|View_Cat_b.png|View
 
 ####
@@ -39,38 +33,14 @@ Find Elements|FindElements|FindElements|Search_Cat_s.png|Search_Cat_b.png|Search
 Selected Find View|SelectedFindView|SelectedFindView|Search_Cat_s.png|Search_Cat_b.png|Search
 
 ####
-#### Sheets Category
+#### BOM Category
 ####
 
-####Scope Boxes Into Sheets|ScopeBoxIntoSheets|ScopeBoxIntoSheets|Sheets_Cat_s.png|Sheets_Cat_b.png|Sheets
-####Image Import into Sheet|ImportImgsIntoSheet|ImportImgsIntoSheet|Sheets_Cat_s.png|Sheets_Cat_b.png|Sheets
-####Schedule Import into Sheet|ImportSchedsIntoSheet|ImportSchedsIntoSheet|Sheets_Cat_s.png|Sheets_Cat_b.png|Sheets
-
-####
-#### WirePull Category
-####
-
-####Wire Pull BOM|BOMGenerator|BOMGenerator|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
-####P3 Lighting BOM|PThreeGenerator|PThreeGenerator|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
-####P3Lite|P3L|P3L|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
+P3 Lighting|P3Lighting|P3Lighting|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
 B.O.M. Generator|WireBOMLite|WireBOMLite|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
-
-####
-#### Hanger Category
-####
-
-####Place Hangers|HangerConstruction|HangerConstruction|Hanger_Cat_s.png|Hanger_Cat_b.png|Hanger
-####Hanger Settings|HangerConstruction|HangerSetup|Hanger_Cat_s.png|Hanger_Cat_b.png|Hanger
-
-####
-#### Graphics Category
-####
-
-####Fix Override Color|FixOverrideColor|FixOverrideColor|Graphics_Cat_s.png|Graphics_Cat_b.png|Graphics
 
 ####
 #### Test Category
 ####
 
 ####Test Program|RevitTestBed|RevitTestBed|Test_Cat_s.png|Test_Cat_b.png|Test
-Revit STL Exporter|RevitSTLExporter|RevitSTLExporter|Test_Cat_s.png|Test_Cat_b.png|Test
