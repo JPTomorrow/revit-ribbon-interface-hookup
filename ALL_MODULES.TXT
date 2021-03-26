@@ -29,7 +29,6 @@ Panel Filters|PanelFilterTemplates|PanelFilterTemplates|View_Cat_s.png|View_Cat_
 #### Search Category
 ####
 
-Find Elements|FindElements|FindElements|Search_Cat_s.png|Search_Cat_b.png|Search
 Selected Find View|SelectedFindView|SelectedFindView|Search_Cat_s.png|Search_Cat_b.png|Search
 
 ####
