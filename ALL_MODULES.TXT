@@ -42,3 +42,9 @@ B.O.M. Generator|WireBOMLite|WireBOMLite|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C
 ####
 
 ####Test Program|RevitTestBed|RevitTestBed|Test_Cat_s.png|Test_Cat_b.png|Test
+
+####
+#### Help Category
+####
+
+Help|MarathonHelp|MarathonHelp|Test_Cat_s.png|Test_Cat_b.png|Help
