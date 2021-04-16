@@ -4,6 +4,7 @@
 
 Conduit Run Info|ConduitRunInfo|ConduitRunInfo|Con_Cat_s.png|Con_Cat_b.png|Electrical
 Jbox Match Run Params|JboxMatchParams|JboxMatchParams|Con_Cat_s.png|Con_Cat_b.png|Electrical
+Conduit To Jbox Params|ConduitToJboxParams|ConduitToJboxParams|Con_Cat_s.png|Con_Cat_b.png|Electrical
 Conduit Workset Match|ConduitWorksetMatch|ConduitWorksetMatch|Con_Cat_s.png|Con_Cat_b.png|Electrical
 Conduit To/From Match|ConduitMatchParams|ConduitMatchParams|Con_Cat_s.png|Con_Cat_b.png|Electrical
 Conduit Match Params Service|ConduitRunMatchParamService|ConduitRunMatchParamService|Con_Cat_s.png|Con_Cat_b.png|Electrical
