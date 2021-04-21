@@ -9,7 +9,7 @@ Conduit Workset Match|ConduitWorksetMatch|ConduitWorksetMatch|Con_Cat_s.png|Con_
 Conduit To/From Match|ConduitMatchParams|ConduitMatchParams|Con_Cat_s.png|Con_Cat_b.png|Electrical
 Conduit Match Params Service|ConduitRunMatchParamService|ConduitRunMatchParamService|Con_Cat_s.png|Con_Cat_b.png|Electrical
 Conduit Tags|ConduitTaggingFactory|ConduitTaggingFactory|Con_Cat_s.png|Con_Cat_b.png|Electrical
-JBox To/From Swap|SwapJboxParam|SwapJboxParam|Con_Cat_s.png|Con_Cat_b.png|Electrical
+Jbox To/From Swap|SwapJboxParam|SwapJboxParam|Con_Cat_s.png|Con_Cat_b.png|Electrical
 Pull Box Sizer|PullBoxSizer|PullBoxSizer|Con_Cat_s.png|Con_Cat_b.png|Electrical
 
 ####
@@ -23,6 +23,7 @@ B.O.M. Generator|WireBOMLite|WireBOMLite|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C
 ####
 
 Fixture To Structure Tag|LightingFixtureElevationToStructure|LightingFixtureElevationToStructure|MPACT_Cat_s.png|MPACT_Cat_b.png|Fixtures
+Jbox Tag Largest Diameter|JboxTagLargestConduitDiameter|JboxTagLargestConduitDiameter|MPACT_Cat_s.png|MPACT_Cat_b.png|Fixtures
 
 ####
 #### View Category
