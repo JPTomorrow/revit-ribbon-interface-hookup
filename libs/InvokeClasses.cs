@@ -110,4 +110,6 @@ namespace MainApp
 	//Help Projects
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
 	public class InvokeMarathonHelp : InvokeModuleBase, IExternalCommand { public override string ModuleName => "MarathonHelp"; }
+	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+	public class InvokeRevitTestBed : InvokeModuleBase, IExternalCommand { public override string ModuleName => "RevitTestBed"; }
 }

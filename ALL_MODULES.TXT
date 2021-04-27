@@ -50,3 +50,4 @@ Selected Find View|SelectedFindView|SelectedFindView|Search_Cat_s.png|Search_Cat
 ####
 
 Help|MarathonHelp|MarathonHelp|Help_Cat_s.png|Help_Cat_b.png|Help
+Test Bed|RevitTestBed|RevitTestBed|Help_Cat_s.png|Help_Cat_b.png|Help
