@@ -24,6 +24,7 @@ B.O.M. Generator|WireBOMLite|WireBOMLite|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C
 
 Fixture To Structure Tag|LightingFixtureElevationToStructure|LightingFixtureElevationToStructure|MPACT_Cat_s.png|MPACT_Cat_b.png|Fixtures
 Jbox Tag Largest Diameter|JboxTagLargestConduitDiameter|JboxTagLargestConduitDiameter|MPACT_Cat_s.png|MPACT_Cat_b.png|Fixtures
+Update Jbox Clearances|UpdateJboxClearances|UpdateJboxClearances|MPACT_Cat_s.png|MPACT_Cat_b.png|Fixtures
 
 ####
 #### View Category

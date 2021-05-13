@@ -103,6 +103,9 @@ namespace MainApp
 	public class InvokeLightingFixtureElevationToStructure : InvokeModuleBase, IExternalCommand { public override string ModuleName => "LightingFixtureElevationToStructure"; }
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
 	public class InvokeJboxTagLargestConduitDiameter : InvokeModuleBase, IExternalCommand { public override string ModuleName => "JboxTagLargestConduitDiameter"; }
+	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+	public class InvokeUpdateJboxClearances : InvokeModuleBase, IExternalCommand { public override string ModuleName => "UpdateJboxClearances"; }
+
 	//Test projects
 	// [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
 	// public class InvokeRevitTestBed : InvokeModuleBase, IExternalCommand { public override string ModuleName => "RevitTestBed"; }
