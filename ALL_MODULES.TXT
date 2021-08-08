@@ -17,6 +17,7 @@ Pull Box Sizer|PullBoxSizer|PullBoxSizer|Con_Cat_s.png|Con_Cat_b.png|Electrical
 ####
 
 B.O.M. Generator|WireBOMLite|WireBOMLite|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
+B.O.M. Generator Debug|WireBOMLite_Debug|WireBOMLite_Debug|MPACT_Cat_s.png|MPACT_Cat_b.png|M.P.A.C.T.
 
 ####
 #### Fixture Category
