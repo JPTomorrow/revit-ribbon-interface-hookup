@@ -12,109 +12,115 @@ using JPMorrow.Tools.Diagnostics;
 
 namespace MainApp
 {
-	public abstract class InvokeModuleBase {
-		public string ExeConfigPath { get; set; }
-		public string ResourcePath { get; set; }
+    public abstract class InvokeModuleBase
+    {
+        public string ExeConfigPath { get; set; }
+        public string ResourcePath { get; set; }
 
-		public abstract string ModuleName { get; }
+        public abstract string ModuleName { get; }
 
-		public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
-		{
-			RevitVersion v = new RevitVersion(commandData.Application.Application.VersionName);
-			string path = Assembly.GetExecutingAssembly().Location;
-			ExeConfigPath = ThisApplication.AppBaseDirectory + "\\" + ModuleName + "\\" + ModuleName + "_" + v.Year + ".dll";
-			
-			string strCommandName = "ThisApplication";
+        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+        {
+            RevitVersion v = new RevitVersion(commandData.Application.Application.VersionName);
+            string path = Assembly.GetExecutingAssembly().Location;
+            ExeConfigPath = ThisApplication.AppBaseDirectory + "\\" + ModuleName + "\\" + ModuleName + "_" + v.Year + ".dll";
 
-			var bytes = File.ReadAllBytes(ExeConfigPath);
-			var asm = Assembly.Load(bytes);
+            string strCommandName = "ThisApplication";
 
-			IEnumerable<Type> myIEnumerableType = GetTypesSafely(asm);
+            var bytes = File.ReadAllBytes(ExeConfigPath);
+            var asm = Assembly.Load(bytes);
 
-			foreach (Type objType in myIEnumerableType)
-			{
-				if (objType.IsClass)
-				{
-					if (objType.Name.ToLower() == strCommandName.ToLower()) {
-						object ibaseObject = Activator.CreateInstance(objType);
+            IEnumerable<Type> myIEnumerableType = GetTypesSafely(asm);
 
-						String res_path = Path.GetDirectoryName(path) + "\\Res";
-						object[] arguments = new object[] { commandData, res_path, elements };
-						object result = null;
+            foreach (Type objType in myIEnumerableType)
+            {
+                if (objType.IsClass)
+                {
+                    if (objType.Name.ToLower() == strCommandName.ToLower())
+                    {
+                        object ibaseObject = Activator.CreateInstance(objType);
 
-						result = objType.InvokeMember("Execute", BindingFlags.Default | BindingFlags.InvokeMethod, null, ibaseObject, arguments);
+                        String res_path = Path.GetDirectoryName(path) + "\\Res";
+                        object[] arguments = new object[] { commandData, res_path, elements };
+                        object result = null;
 
-						break;
-					}
-				}
-			}
-			return Result.Succeeded;
+                        result = objType.InvokeMember("Execute", BindingFlags.Default | BindingFlags.InvokeMethod, null, ibaseObject, arguments);
 
-		}
+                        break;
+                    }
+                }
+            }
+            return Result.Succeeded;
+        }
 
-		private static IEnumerable<Type> GetTypesSafely(Assembly assembly) {
+        private static IEnumerable<Type> GetTypesSafely(Assembly assembly)
+        {
 
-			try {
-				return assembly.GetTypes();
-			}
-			catch (ReflectionTypeLoadException ex) {
-				return ex.Types.Where(x => x != null);
-			}
-		}
+            try
+            {
+                return assembly.GetTypes();
+            }
+            catch (ReflectionTypeLoadException ex)
+            {
+                return ex.Types.Where(x => x != null);
+            }
+        }
 
-	}
+    }
 
-	//Conduit Projects
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeConduitRunInfo : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ConduitRunInfo"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeConduitToJboxParams : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ConduitToJboxParams"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeJboxMatchParams : InvokeModuleBase, IExternalCommand { public override string ModuleName => "JboxMatchParams"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeConduitMatchParams : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ConduitMatchParams"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeConduitWorksetMatch : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ConduitWorksetMatch"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeConduitRunMatchParamService : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ConduitRunMatchParamService"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeSwapJboxParam : InvokeModuleBase, IExternalCommand { public override string ModuleName => "SwapJboxParam"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokePullBoxSizer : InvokeModuleBase, IExternalCommand { public override string ModuleName => "PullBoxSizer"; }
-	
-	//View Projects
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeAlign3DViewToScopeBox : InvokeModuleBase, IExternalCommand { public override string ModuleName => "Align3DViewToScopeBox"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeClampFloorplanCropRegion : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ClampFloorplanCropRegion"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokePanelFilterTemplates : InvokeModuleBase, IExternalCommand { public override string ModuleName => "PanelFilterTemplates"; }
-	
-	//Search projects
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeSelectedFindView : InvokeModuleBase, IExternalCommand { public override string ModuleName => "SelectedFindView"; }
-	
-	//M.P.A.C.T. projects
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    //Conduit Projects
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeConduitRunInfo : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ConduitRunInfo"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeConduitToJboxParams : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ConduitToJboxParams"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeJboxMatchParams : InvokeModuleBase, IExternalCommand { public override string ModuleName => "JboxMatchParams"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeConduitMatchParams : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ConduitMatchParams"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeConduitWorksetMatch : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ConduitWorksetMatch"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeConduitRunMatchParamService : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ConduitRunMatchParamService"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeSwapJboxParam : InvokeModuleBase, IExternalCommand { public override string ModuleName => "SwapJboxParam"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokePullBoxSizer : InvokeModuleBase, IExternalCommand { public override string ModuleName => "PullBoxSizer"; }
+
+    //View Projects
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeAlign3DViewToScopeBox : InvokeModuleBase, IExternalCommand { public override string ModuleName => "Align3DViewToScopeBox"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeClampFloorplanCropRegion : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ClampFloorplanCropRegion"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokePanelFilterTemplates : InvokeModuleBase, IExternalCommand { public override string ModuleName => "PanelFilterTemplates"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeToggleFilters : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ToggleFilters"; }
+
+    //Search projects
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeSelectedFindView : InvokeModuleBase, IExternalCommand { public override string ModuleName => "SelectedFindView"; }
+
+    //M.P.A.C.T. projects
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
     public class InvokeWireBOMLite : InvokeModuleBase, IExternalCommand { public override string ModuleName => "WireBOMLite"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-    public class InvokeWireBOMLite_Debug : InvokeModuleBase, IExternalCommand { public override string ModuleName => "WireBOMLite_Debug"; }
-	
-	// Fixture projects
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeLightingFixtureElevationToStructure : InvokeModuleBase, IExternalCommand { public override string ModuleName => "LightingFixtureElevationToStructure"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeJboxTagLargestConduitDiameter : InvokeModuleBase, IExternalCommand { public override string ModuleName => "JboxTagLargestConduitDiameter"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeUpdateJboxClearances : InvokeModuleBase, IExternalCommand { public override string ModuleName => "UpdateJboxClearances"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeBOMJsonExporter : InvokeModuleBase, IExternalCommand { public override string ModuleName => "BOMJsonExporter"; }
 
-	//Test projects
-	// [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	// public class InvokeRevitTestBed : InvokeModuleBase, IExternalCommand { public override string ModuleName => "RevitTestBed"; }
+    // Fixture projects
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeLightingFixtureElevationToStructure : InvokeModuleBase, IExternalCommand { public override string ModuleName => "LightingFixtureElevationToStructure"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeJboxTagLargestConduitDiameter : InvokeModuleBase, IExternalCommand { public override string ModuleName => "JboxTagLargestConduitDiameter"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeUpdateJboxClearances : InvokeModuleBase, IExternalCommand { public override string ModuleName => "UpdateJboxClearances"; }
 
-	//Help Projects
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeMarathonHelp : InvokeModuleBase, IExternalCommand { public override string ModuleName => "MarathonHelp"; }
-	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-	public class InvokeRevitTestBed : InvokeModuleBase, IExternalCommand { public override string ModuleName => "RevitTestBed"; }
+    //Test projects
+    // [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    // public class InvokeRevitTestBed : InvokeModuleBase, IExternalCommand { public override string ModuleName => "RevitTestBed"; }
+
+    //Help Projects
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeMarathonHelp : InvokeModuleBase, IExternalCommand { public override string ModuleName => "MarathonHelp"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeRevitTestBed : InvokeModuleBase, IExternalCommand { public override string ModuleName => "RevitTestBed"; }
 }
