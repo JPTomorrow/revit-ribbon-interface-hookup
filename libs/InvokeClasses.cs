@@ -16,7 +16,6 @@ namespace MainApp
     {
         public string ExeConfigPath { get; set; }
         public string ResourcePath { get; set; }
-
         public abstract string ModuleName { get; }
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
@@ -77,6 +76,8 @@ namespace MainApp
     public class InvokeJboxMatchParams : InvokeModuleBase, IExternalCommand { public override string ModuleName => "JboxMatchParams"; }
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
     public class InvokeConduitMatchParams : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ConduitMatchParams"; }
+    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+    public class InvokeConduitMatchParamsRack : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ConduitMatchParamsRack"; }
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
     public class InvokeConduitWorksetMatch : InvokeModuleBase, IExternalCommand { public override string ModuleName => "ConduitWorksetMatch"; }
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
