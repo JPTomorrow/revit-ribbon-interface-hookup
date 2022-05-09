@@ -105,7 +105,7 @@ namespace MainApp
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
     public class InvokeWireBOMLite : InvokeModuleBase, IExternalCommand { public override string ModuleName => "WireBOMLite"; }
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-    public class InvokeBOMJsonExporter : InvokeModuleBase, IExternalCommand { public override string ModuleName => "BOMJsonExporter"; }
+    public class InvokeWebBOM : InvokeModuleBase, IExternalCommand { public override string ModuleName => "WebBOM"; }
 
     // Fixture projects
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
